@@ -62,7 +62,7 @@ export const createCheckoutSession = async (req, res) => {
         userId: userId,
       },
       shipping_address_collection: {
-        allowed_countries: ["IN"], // Optionally restrict allowed countries
+        allowed_countries: ["IN"], 
       },
     });
 
