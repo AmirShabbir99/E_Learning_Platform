@@ -96,10 +96,10 @@ const Login = () => {
         </TabsList>
         <TabsContent value="signup">
           <Card>
-            <CardHeader>
-              <CardTitle>Signup</CardTitle>
+            <CardHeader className="text-center">
+              <CardTitle >Signup</CardTitle>
               <CardDescription>
-                Create a new account and click signup when you're done.
+                Create a new account
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -156,10 +156,10 @@ const Login = () => {
         </TabsContent>
         <TabsContent value="login">
           <Card>
-            <CardHeader>
+            <CardHeader className="text-center">
               <CardTitle>Login</CardTitle>
               <CardDescription>
-                Login your password here. After signup, you'll be logged in.
+                Login your password here
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
