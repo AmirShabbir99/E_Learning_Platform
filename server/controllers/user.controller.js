@@ -30,7 +30,6 @@ export const register = async (req, res) => {
             password: hashedPassword
         });
 
-        // ✅ ONLY this — generateToken sends the response
         return generateToken(res, newUser, `Welcome ${newUser.name}`);
 
     } catch (error) {
