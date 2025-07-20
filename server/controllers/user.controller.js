@@ -3,41 +3,45 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/generateToken.js";
 import { deleteMediaFromCloudinary, uploadMedia } from "../utils/cloudinary.js";
 
-export const register = async (req,res) => {
+export const register = async (req, res) => {
     try {
-       
-        const {name, email, password} = req.body; // Amir
-        if(!name || !email || !password){
+        const { name, email, password } = req.body;
+
+        if (!name || !email || !password) {
             return res.status(400).json({
-                success:false,
-                message:"All fields are required."
-            })
+                success: false,
+                message: "All fields are required."
+            });
         }
-        const user = await User.findOne({email});
-        if(user){
+
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
             return res.status(400).json({
-                success:false,
-                message:"User already exist with this email."
-            })
+                success: false,
+                message: "User already exists with this email."
+            });
         }
+
         const hashedPassword = await bcrypt.hash(password, 10);
-        await User.create({
+
+        const newUser = await User.create({
             name,
             email,
-            password:hashedPassword
+            password: hashedPassword
         });
-        return res.status(201).json({
-            success:true,
-            message:"Account created successfully."
-        })
+
+        // ✅ ONLY this — generateToken sends the response
+        return generateToken(res, newUser, `Welcome ${newUser.name}`);
+
     } catch (error) {
         console.log(error);
         return res.status(500).json({
-            success:false,
-            message:"Failed to register"
-        })
+            success: false,
+            message: "Failed to register"
+        });
     }
-}
+};
+
 export const login = async (req,res) => {
     try {
         const {email, password} = req.body;
