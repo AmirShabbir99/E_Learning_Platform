@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { useCreateCheckoutSessionMutation } from "@/features/api/purchaseApi";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-
+//buycourse
 const BuyCourseButton = ({ courseId }) => {
   const [createCheckoutSession, {data, isLoading, isSuccess, isError, error }] =
     useCreateCheckoutSessionMutation();
