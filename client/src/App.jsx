@@ -24,6 +24,8 @@ import {
 import PurchaseCourseProtectedRoute from "./components/PurchaseCourseProtectedRoute";
 import { ThemeProvider } from "./components/ThemeProvider";
 
+//appRouter
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
